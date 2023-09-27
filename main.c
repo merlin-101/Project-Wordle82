@@ -11,7 +11,7 @@
 char	**dictionary = NULL; //Global variable to store the list of words with 5 letters
 int		num_words_in_dictionary = 0; // Global variable to keep track of the number of words
 
-//Could have used structure and for's but wanted to go raw and with 42's methodology given the timeframes
+//Could have used structure/or Hash maps and for's but wanted to go raw and with 42's methodology given the timeframes
 //Global variables to store statistics
 int gamesPlayed = 0;
 int gamesWon = 0;
@@ -19,7 +19,7 @@ int bestTry = 0;
 int actualWins = 0;
 int bestWins = 0;
 
-//could have used an array as well but decided to do it by direct assignment given time constraints
+//could have used an array here as well but decided to do it by direct assignment given time constraints and debugging
 //Global Variables for the scores of each try
 float	life_6_score;
 float	life_5_score;
@@ -29,6 +29,8 @@ float	life_2_score;
 float	life_1_score;
 
 //-------- best tries from all games count
+// didn't have time to finish the stats for best try for each life but
+// I created a ranking system to choose the best try with yellow's being 0,5 score and greens 1 score
 int	life_6_tries;
 int	life_5_tries;
 int	life_4_tries;
@@ -205,6 +207,7 @@ char	*sauce_randomizer(void)
 	}
 	srand(time(NULL)); //clears the previous value in case it has been used before
 	random_n = rand() % num_words_in_dictionary;
+	printf("This is the chosen word \033[1;4m%s\033[0m!\n", dictionary[random_n]);
 	return (dictionary[random_n]);
 }
 
@@ -344,6 +347,21 @@ int	main_game(char *user_name)
 		result = strcmp(word, User_input);
 		if (result == 0) {
 			printf("Congratulations! You win, here is a cookie!\n");
+			printf( "									  \n"
+					"         ⢀⣠⣴⣶⣿⣿⡿⠿⠷⣶⣤⣄⡀        \n"
+					"      ⢀⣴⣾⣿⣿⣿⣿⣿⣿⣇  ⢸⣿⣿⣿⣦⡀       \n"
+					"    ⢀⣴⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀    \n"
+					"   ⢠⣿⡟⠁  ⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀   \n"
+					"  ⢠⣿⣿⣿⣦⣄⣠⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣷   \n"
+					"  ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏  ⢹⣿⣿⣿⡇  \n"
+					"  ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿  \n"
+					"  ⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟  \n"
+					"  ⠈⢿⣿⣿⣿⣿⠟⠻⣿⣿⠋ ⠉⣿⣿⣿⣿⣿⣿⣿⣿⡏ ⢙⣿⠃  \n"
+					"   ⠈⢿⣿⣿⠁  ⠘⣿⣆ ⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏   \n"
+					"     ⠙⢿⣦⣤⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋    \n"
+					"       ⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠉⢹⣿⣿⡿⠟⠁     \n"
+					"          ⠉⠛⠿⠿⣿⣿⣿⣷⡤⠾⠛⠉        \n"
+					"									  \n");
 			gamesPlayed += 1;
 			gamesWon += 1;
 			actualWins += 1;
